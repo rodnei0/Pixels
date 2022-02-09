@@ -1,7 +1,10 @@
 import { Bottom, ProductsContainer, Categories, Title, SearchBox, Top, Container, MainContainer } from "./styles"
 import Products from "./Products";
+import { useState } from "react";
 
 function Main() {
+    const [ category, setCategory ] = useState("smartphone");
+
     return (
         <MainContainer>
 
@@ -15,14 +18,14 @@ function Main() {
                 retire na loja
             </Title>
             <Categories>
-                <span>Smartphones</span>
-                <span>Notebooks</span>
-                <span>Fones</span>
-                <span>Periféricos</span>
+                <button onClick={() => {setCategory("smartphone")}}>Smartphones</button>
+                <button onClick={() => {setCategory("notebook")}}>Notebooks</button>
+                <button onClick={() => {setCategory("fone")}}>Fones</button>
+                <button onClick={() => {setCategory("periferico")}}>Periféricos</button>
             </Categories>
             <ProductsContainer>
 
-                <Products></Products>
+                <Products category={category}></Products>
 
             </ProductsContainer>
             <Bottom>
@@ -35,7 +38,5 @@ function Main() {
         </MainContainer>
     );
 }
-
-
 
 export default Main;

@@ -76,13 +76,15 @@ const Categories = styled.div`
         background: #424242;
     } */
 
-    span {
+    button {
         margin-right: 10px;
 
         font-weight: 600;
         font-size: 17px;
         line-height: 20px;
         color: #9A9A9D;
+        background-color: #E5E5E5;
+        border: 0;
 
         &:hover {
             cursor: pointer;
@@ -97,7 +99,6 @@ const ProductsContainer = styled.div`
     height: 318px;
     margin-top: 25px;
     overflow: auto;
-
 `;
 
 const Product = styled.div`
@@ -115,6 +116,10 @@ const Product = styled.div`
 `;
 
 const ProductPicture = styled.figure`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
     position: absolute;
     width: 150px;
     height: 150px;
@@ -125,8 +130,8 @@ const ProductPicture = styled.figure`
     background: #424242;
 
     img {
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
     }
 `;
 

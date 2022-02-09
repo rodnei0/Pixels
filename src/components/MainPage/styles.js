@@ -1,67 +1,5 @@
 import styled from "styled-components";
 
-function Products() {
-    return (
-        <MainContainer>
-
-        <Container>
-            <Top>
-                <ion-icon name="menu-outline"></ion-icon>
-                <SearchBox><ion-icon name="search-outline"></ion-icon></SearchBox>
-            </Top>
-            <Title>
-                Compre online 
-                retire na loja
-            </Title>
-            <Categories>
-                <span>Smartphones</span>
-                <span>Notebooks</span>
-                <span>Fones</span>
-                <span>Periféricos</span>
-            </Categories>
-            <ProductsContainer>
-                <Product>
-                    <ProductPicture>
-                        <img src="https://files.tecnoblog.net/wp-content/uploads/2021/09/iphone-13-produto-2-700x700.png" alt="iphone"></img>
-                    </ProductPicture>
-                    <ProductDescription>
-                        iPhone 13
-                        <p>Tela de 6.1"</p>
-                        <div>R$ 7.599</div>
-                    </ProductDescription>
-                </Product>
-                <Product>
-                    <ProductPicture>
-                        <img src="https://files.tecnoblog.net/wp-content/uploads/2021/09/iphone-13-produto-2-700x700.png" alt="iphone"></img>
-                    </ProductPicture>
-                    <ProductDescription>
-                        iPhone 13
-                        <p>Tela de 6.1"</p>
-                        <div>R$ 7.599</div>
-                    </ProductDescription>
-                </Product>
-                <Product>
-                    <ProductPicture>
-                        <img src="https://files.tecnoblog.net/wp-content/uploads/2021/09/iphone-13-produto-2-700x700.png" alt="iphone"></img>
-                    </ProductPicture>
-                    <ProductDescription>
-                        iPhone 13
-                        <p>Tela de 6.1"</p>
-                        <div>R$ 7.599</div>
-                    </ProductDescription>
-                </Product>
-            </ProductsContainer>
-            <Bottom>
-                <ion-icon name="home-outline"></ion-icon>
-                <ion-icon name="heart-outline"></ion-icon>
-                <ion-icon name="person-outline"></ion-icon>
-                <ion-icon name="cart-outline"></ion-icon>
-            </Bottom>
-        </Container>
-        </MainContainer>
-    );
-}
-
 const MainContainer = styled.div`
     display: flex;
     flex-direction: column;     
@@ -237,4 +175,6 @@ const Bottom = styled.div`
     }
 `;
 
-export default Products;
+export {
+    Bottom, ProductDescription, ProductPicture, Product, ProductsContainer, Categories, Title, SearchBox, Top, Container, MainContainer
+}

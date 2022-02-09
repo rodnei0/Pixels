@@ -1,8 +1,8 @@
-import Products from "./components/ProductsPage";
+import Main from "./components/MainPage";
 
 function App() {
     return (
-        <Products />
+        <Main />
     );
 }
 

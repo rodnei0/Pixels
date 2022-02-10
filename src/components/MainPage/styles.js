@@ -5,6 +5,7 @@ const MainContainer = styled.div`
     flex-direction: column;     
     justify-content: center;
     align-items: center;
+    position: relative;
 
     min-height: 100vh;
 `;
@@ -12,16 +13,19 @@ const MainContainer = styled.div`
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
+
     padding-left: 39px;
 
     width: 375px;
-    min-height: 100vh;
+    /* min-height: 100vh; */
 `;
 
 const Top = styled.div`
     display: flex;
     margin-right: auto;
+    position: absolute;
+    top: 25px;
 
     ion-icon {
         font-size: 50px;
@@ -165,7 +169,9 @@ const ProductDescription = styled.span`
 
 const Bottom = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 15px;
 
     width: 297px;
     margin-top: 35px;

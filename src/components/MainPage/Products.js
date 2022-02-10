@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { ProductDescription, ProductPicture, Product } from "./styles"
 
 function Products({category}) {
@@ -27,16 +28,18 @@ function Products({category}) {
     return (
         products.map(product => {
             return (
-                <Product key={product._id}>
-                    <ProductPicture>
-                        <img src={product.image} alt="iphone"></img>
-                    </ProductPicture>
-                    <ProductDescription>
-                        {product.name}
-                        <p>{product.shortDescription}</p>
-                        <div>R$ {product.value}</div>
-                    </ProductDescription> 
-                </Product>
+                <Link to={"/product"} key={product._id} state={product}>
+                    <Product>
+                        <ProductPicture>
+                            <img src={product.image} alt="iphone"></img>
+                        </ProductPicture>
+                        <ProductDescription>
+                            {product.name}
+                            <p>{product.shortDescription}</p>
+                            <div>R$ {product.value}</div>
+                        </ProductDescription> 
+                    </Product>
+                </Link>
             );
         })
     );

@@ -1,8 +1,15 @@
-import Main from "./components/MainPage";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import MainPage from "./components/MainPage";
+import ProductPage from "./components/ProductPage";
 
 function App() {
     return (
-        <Main />
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<MainPage />}/>
+                <Route path="/product" element={<ProductPage />}/>
+            </Routes>
+        </BrowserRouter>
     );
 }
 

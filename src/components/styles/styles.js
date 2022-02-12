@@ -12,10 +12,10 @@ display:flex;
 justify-content:center;
 align-items:center;
 
-font-size:22px;
+font-size:20px;
 font-weight:bold;
 
-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
 
 color:#424242;
 
@@ -29,6 +29,7 @@ align-items:center;
 flex-direction: column;
 height:100vh;
 
+background-color:white;
 
 
 padding:20px;
@@ -40,8 +41,8 @@ padding:20px;
     justify-content: center;
     height:100vh;
     img{
-        width:30px;
-        height:30px;
+        width:50px;
+        height:50px;
     }
     p{
         font-size:18px;
@@ -55,17 +56,20 @@ padding:20px;
 }
 `
 const Favorites = styled.div` 
+width:100%;
 
 font-weight: bold;
 
 padding-top:80px;
 
+
+
 .price{
-    color:#41EF7B;
+    color:#70D159;
     padding:10px;
 }
 .description{
-    color:#424242;
+    color:rgba(0, 0, 0, 0.5);
     padding:10px;
 }
 img{
@@ -74,8 +78,11 @@ img{
 }
 
 .block{
+
 display:flex;
 align-items:center;
+gap:12px;
+
 padding:12px;
 }
 
@@ -86,8 +93,8 @@ const Button = styled.button`
 all:unset;
 color:white;
 
-width:80px;
-height:40px;
+
+font-weight: bold;
 
 display:flex;
 justify-content: center;
@@ -95,18 +102,42 @@ align-items: center;
 
 background-color: #424242;
 
+border-radius:9px;
+
 cursor:pointer;
+
+padding:15px;
 
 
 :hover{
-    background-color: #41EF7B;
-    width:73px;
-    height:37px;
+    background-color: #70D159;
+    padding:12px;
 }
+`
+const Details = styled.div` 
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items:center;
+
+.delivered{
+    color:#141310;
+    font-size: 16px;
+    font-weight: bold;
+
+    padding-left:12px;
+}
+.address{
+    font-size:14px;
+    color:rgba(0, 0, 0, 0.5);
+    word-wrap:break-word;
+}
+
 `
 export {
     Container,
     Favorites,
     Button,
-    Header
+    Header,
+    Details
 }

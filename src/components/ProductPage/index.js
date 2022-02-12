@@ -1,6 +1,8 @@
 import { Top, MainContainer, Container, Name, ProductInfo, FullDescription, Value, AddBasket } from "./styles.js"
 import SimpleImageSlider from "react-simple-image-slider";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import BasketContext from "../../contexts/BasketContext.js";
 
 // somente para testar o slider
 const images = [
@@ -12,9 +14,14 @@ const images = [
 //.............................
 
 function ProductPage() {
+    const { basket, setBasket}  = useContext(BasketContext);
     const navigate = useNavigate();
     const location = useLocation();
     const product = location.state;
+
+    function handleBasket() {
+        setBasket([...basket, product._id]);
+    }
 
     return (
         <MainContainer>
@@ -36,7 +43,7 @@ function ProductPage() {
                     <Name>{product.name}</Name>
                     <FullDescription>{product.description}</FullDescription>
                     <Value><p>Apartir de</p><span>R$ {product.value.toFixed(2)}</span></Value>
-                    <AddBasket>Adicionar ao carrinho</AddBasket>
+                    <AddBasket onClick={handleBasket}>Adicionar ao carrinho</AddBasket>
                 </ProductInfo>
             </Container>
         </MainContainer>

@@ -184,6 +184,29 @@ const Bottom = styled.div`
             color: #70D159;
         }
     }
+    
+    div {
+        position: relative;
+    }
+
+    div div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: absolute;
+        top: -7px;
+        right: -5px;
+
+        height: 17px;
+        width: 17px;
+
+        font-size: 13px;
+        color: #ffffff;
+        background-color: red;
+
+        border-radius: 50%;
+    }
 `;
 
 export {

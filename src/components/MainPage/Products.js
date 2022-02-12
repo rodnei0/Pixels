@@ -1,10 +1,11 @@
 import axios from "axios";
-import { useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
+import BasketContext from "../../contexts/BasketContext";
 import { ProductDescription, ProductPicture, Product } from "./styles"
 
 function Products({category}) {
-    const [ products, setProducts ] = useState([]);
+    const { products, setProducts } = useContext(BasketContext);
 
     const config = useMemo(() => {
         const data = {
@@ -23,7 +24,7 @@ function Products({category}) {
         promisse.catch(response => {
             console.log(response);
         });
-    }, [config]);
+    }, [config, setProducts]);
 
     return (
         products.map(product => {

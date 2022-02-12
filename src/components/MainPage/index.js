@@ -1,9 +1,13 @@
 import { Bottom, ProductsContainer, Categories, Title, SearchBox, Top, Container, MainContainer } from "./styles"
 import Products from "./Products";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import BasketContext from "../../contexts/BasketContext";
+import { useNavigate } from "react-router-dom";
 
 function MainPage() {
     const [ category, setCategory ] = useState("smartphone");
+    const { basket } = useContext(BasketContext);
+    const navigate = useNavigate();
 
     return (
         <MainContainer>
@@ -29,7 +33,10 @@ function MainPage() {
                 <ion-icon name="home-outline"></ion-icon>
                 <ion-icon name="heart-outline"></ion-icon>
                 <ion-icon name="person-outline"></ion-icon>
-                 <ion-icon name="cart-outline"></ion-icon>
+                <div onClick={() => navigate("/basket")}>
+                    <ion-icon name="cart-outline"></ion-icon>
+                    <div>{basket.length}</div>
+                </div>
             </Bottom>
         </MainContainer>
     );

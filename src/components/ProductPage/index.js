@@ -20,7 +20,17 @@ function ProductPage() {
     const product = location.state;
 
     function handleBasket() {
-        setBasket([...basket, product._id]);
+        if (basket.length === 0) {
+            setBasket([...basket, product]);
+        } else {
+            basket.forEach(basketProduct => {
+                if (product._id === basketProduct._id) {
+                    alert("Produto já adicionado ao carrinho")
+                } else {
+                    setBasket([...basket, product]);
+                }
+            })
+        }
     }
 
     return (

@@ -8,10 +8,11 @@ import BasketContext from "./contexts/BasketContext";
 function App() {
     const [ basket, setBasket ] = useState([]);
     const [ products, setProducts ] = useState([]);
-
+    const [ total, setTotal ] = useState(0);
+    const [ category, setCategory ] = useState("smartphone");
 
     return (
-        <BasketContext.Provider value={{basket, setBasket, products, setProducts}}>            
+        <BasketContext.Provider value={{basket, setBasket, products, setProducts, total, setTotal, category, setCategory}}>            
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<MainPage />}/>

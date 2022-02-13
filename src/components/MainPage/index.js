@@ -1,12 +1,11 @@
 import { Bottom, ProductsContainer, Categories, Title, SearchBox, Top, Container, MainContainer } from "./styles"
 import Products from "./Products";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import BasketContext from "../../contexts/BasketContext";
 import { useNavigate } from "react-router-dom";
 
 function MainPage() {
-    const [ category, setCategory ] = useState("smartphone");
-    const { basket } = useContext(BasketContext);
+    const { basket, category, setCategory } = useContext(BasketContext);
     const navigate = useNavigate();
 
     return (

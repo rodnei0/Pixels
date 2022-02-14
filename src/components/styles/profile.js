@@ -6,6 +6,9 @@ flex-direction:column;
 justify-content:flex-start;
 align-items:flex-start;
 height:100vh;
+div{
+    cursor:pointer;
+}
 
 
 

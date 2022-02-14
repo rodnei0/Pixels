@@ -53,7 +53,7 @@ export default function FavoritesPage() {
         <img src={product.image} alt={product.description} />
         <div>
         <p  className="description">{product.description}</p>
-        <p className="price">{product.price}</p>
+        <p className="price">{product.value}</p>
         </div>
         <Button onClick={()=>navigate('/')}>Adicionar</Button> 
     </div>

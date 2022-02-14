@@ -22,7 +22,7 @@ function ProductPage() {
     const product = location.state;
     const [ added, setAdded]=useState(false);
     const { info } = useContext(UserContext);
-    const BaseURL = 'http://localhost:5000';
+    const BaseURL = 'https://back-pixels.herokuapp.com';
 
 
     function handleBasket() {

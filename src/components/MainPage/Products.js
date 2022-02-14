@@ -17,7 +17,7 @@ function Products({category}) {
     }, [category]);
 
     useEffect(() => {
-        const promisse = axios.get("http://localhost:5000/products", config);
+        const promisse = axios.get("https://back-pixels.herokuapp.com/products", config);
         promisse.then(response => {
             setProducts(response.data)
         });

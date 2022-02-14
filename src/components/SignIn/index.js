@@ -22,7 +22,7 @@ const navigate = useNavigate();
 const [email,setEmail]=useState('');
 const [password,setPassword]=useState('');
 const {setInfo}=useContext(UserContext);
-const BaseURL = 'http://localhost:5000';
+const BaseURL = 'https://back-pixels.herokuapp.com';
 
 
 

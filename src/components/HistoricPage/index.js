@@ -23,7 +23,7 @@ export default function HistoricPage() {
    const purchase = location.state;
    const {info} = useContext(UserContext);
    const [items,setItems]=useState();
-   const BaseURL = 'http://localhost:5000';
+   const BaseURL = 'https://back-pixels.herokuapp.com';
 
    const alert = (text) => toast.error(`${text}`, {
     position: "top-center",

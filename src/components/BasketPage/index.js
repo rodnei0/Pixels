@@ -50,7 +50,7 @@ function BasketPage() {
     }
 
     function handleCheckout() {
-            const promisse = axios.get("http://localhost:5000/checkout", config);
+            const promisse = axios.get("https://back-pixels.herokuapp.com/checkout", config);
             promisse.then(response => {
                 navigate("/checkout")
             });

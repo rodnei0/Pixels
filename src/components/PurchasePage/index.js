@@ -19,7 +19,7 @@ import BottomBar from '../BottomBar';
   
 
 export default function Purchases() {
-    const BaseURL = 'http://localhost:5000';
+    const BaseURL = 'https://back-pixels.herokuapp.com';
     const {info}=useContext(UserContext);
     const [ purchases, setPurchases ] = useState();
     const navigate = useNavigate();

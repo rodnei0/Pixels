@@ -44,7 +44,7 @@ function CheckoutPage() {
     CalculateTotal();
 
     function handlePayment() {
-            const promisse = axios.post("http://localhost:5000/checkout", data, config);
+            const promisse = axios.post("https://back-pixels.herokuapp.com/checkout", data, config);
             promisse.then(response => {
                 alert("Parabéns, sua compra foi concluída!");
                 setBasket([]);

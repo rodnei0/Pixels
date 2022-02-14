@@ -31,7 +31,7 @@ export default function FavoritesPage() {
     //     price:'$RS 12,500'
     //   }
     // ]
-    const BaseURL = 'http://localhost:5000';
+    const BaseURL = 'https://back-pixels.herokuapp.com';
     const {info}=useContext(UserContext);
     const [favoriteProducts,setFavoriteProducts]=useState();
     const navigate = useNavigate();

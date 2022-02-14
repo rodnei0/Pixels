@@ -25,7 +25,7 @@ const [name,setName]=useState('');
 const [password,setPassword]=useState('');
 const [address,setAddress]=useState('');
 
-const BaseURL = 'http://localhost:5000';
+const BaseURL = 'https://back-pixels.herokuapp.com';
 
 
 

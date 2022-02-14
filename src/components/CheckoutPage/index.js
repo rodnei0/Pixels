@@ -1,6 +1,6 @@
 import { Top, MainContainer, Container, Checkout, Total, Bottom } from "./styles.js"
 import { useNavigate } from "react-router-dom";
-import { useContext, useEffect, useMemo } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import BasketContext from "../../contexts/BasketContext.js";
 import UserContext from "../../contexts/UserContext.js";
 import axios from "axios";
@@ -8,13 +8,11 @@ import styled from "styled-components";
 
 
 function CheckoutPage() {
-    const { basket }  = useContext(BasketContext);
-    const { total, setTotal } = useContext(BasketContext);
+    const { total, setTotal, basket, setBasket }  = useContext(BasketContext);
     const { info } = useContext(UserContext);
+    const [ checked, setChecked ] = useState(true);
     const navigate = useNavigate();
     
-    console.log(info);
-
     const config = useMemo(() => {
         const data = {
             headers: {
@@ -28,7 +26,6 @@ function CheckoutPage() {
         const productsIds = basket.map(product => {
             return product._id
         })
-        console.log(productsIds)
         const dta = {
                 items : productsIds
             }
@@ -49,7 +46,9 @@ function CheckoutPage() {
     function handlePayment() {
             const promisse = axios.post("http://localhost:5000/checkout", data, config);
             promisse.then(response => {
-                console.log(response);
+                alert("Parabéns, sua compra foi concluída!");
+                setBasket([]);
+                navigate("/")
             });
             promisse.catch(response => {
                 console.log(response);
@@ -82,21 +81,21 @@ function CheckoutPage() {
                 <PaymentMethod>
                     <form>
                         <div>
-                            <input type="radio" name="payment"></input>
+                            <input type="radio" name="payment" onChange={()=>setChecked(false)}></input>
                             <div>
                                 <ion-icon name="card-outline"></ion-icon>
                                 <span>**** **** **** 1234</span>
                             </div>
                         </div>
                         <div>
-                            <input type="radio" name="payment"></input>
+                            <input type="radio" name="payment" onChange={()=>setChecked(false)}></input>
                             <div>
                                 <ion-icon name="card-outline"></ion-icon>
                                 <span>**** **** **** 4567</span>
                             </div>
                         </div>
                         <div>
-                            <input type="radio" name="payment"></input>
+                            <input type="radio" name="payment" onChange={()=>setChecked(false)}></input>
                             <div>
                                 <ion-icon name="cash-outline"></ion-icon>
                                 <span>**** **** **** 1234</span>
@@ -110,7 +109,7 @@ function CheckoutPage() {
                     <span>Total</span>
                     <div>R$ {total.toFixed(2)}</div>
                 </Total>
-                <Checkout onClick={handlePayment}>Confirmar e pagar</Checkout>
+                <Checkout onClick={handlePayment} disabled={checked}>Confirmar e pagar</Checkout>
             </Bottom>
         </MainContainer>
     );

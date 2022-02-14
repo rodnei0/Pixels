@@ -79,7 +79,7 @@ function BasketPage() {
                     <span>Total</span>
                     <div>R$ {total.toFixed(2)}</div>
                 </Total>
-                <Checkout onClick={handleCheckout}>Checkout</Checkout>
+                <Checkout onClick={handleCheckout} disabled={basket.length === 0}>Checkout</Checkout>
             </Bottom>
         </MainContainer>
     );

@@ -6,15 +6,14 @@ flex-direction:column;
 justify-content:flex-start;
 align-items:flex-start;
 height:100vh;
+position: relative;
+
 div{
     cursor:pointer;
 }
 
-
-
 background-color:#f2f2f2;
 
-padding:26px;
 
 img{
     width:20px;
@@ -92,7 +91,13 @@ font-weight:bold;
 
 margin-bottom: 26px;;
 `
+
+const AccountContainer = styled.div`
+    padding: 26px;
+`;
+
 export{
     Container,
-    Title
+    Title,
+    AccountContainer
 }

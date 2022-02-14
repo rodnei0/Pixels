@@ -10,6 +10,7 @@ import { Container,
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate, Link } from 'react-router-dom';
+import BottomBar from '../BottomBar';
 
 
 export default function FavoritesPage() {
@@ -82,7 +83,10 @@ export default function FavoritesPage() {
 
   return (
     <Container align={'flex-start'}>
-      <Header>Favoritos</Header>
+            <Header> 
+              <ion-icon name="arrow-back-outline" onClick={() => navigate(-1)}></ion-icon>
+              Favoritos 
+            </Header>
       {
         favoriteProducts? 
         <Favorites>
@@ -114,6 +118,7 @@ export default function FavoritesPage() {
               draggable
               pauseOnHover
             />
+            <BottomBar></BottomBar>
     </Container>
   )
 }

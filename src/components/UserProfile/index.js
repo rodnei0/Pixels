@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import LocationIcon from '../../assets/location.png';
 import NextIcon from '../../assets/arrow-forward-outline.svg';
 import UserContext from '../../contexts/UserContext'
@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import {Container,Title} from '../styles/profile';
+import {Container,Title, AccountContainer} from '../styles/profile';
+import BottomBar from '../BottomBar';
 
 export default function UserProfile() {
     const {info}=useContext(UserContext);
@@ -22,13 +23,16 @@ export default function UserProfile() {
       progress: undefined,
     });
 
-    if(!info){
-      alert("Faça o login no seu perfil");
-      return navigate('/signin')
-    }
+    useEffect(() => {
+      if(!info){
+        alert("Faça o login no seu perfil");
+        navigate('/signin')
+      }
+    });
 
   return (
     <Container>
+      <AccountContainer>
         <Title>Minha conta</Title>
 
         <div className="top">
@@ -40,13 +44,14 @@ export default function UserProfile() {
         </div>
 
         <div className="flex">
-            <p onClick={()=>navigate('/historic')}>Minhas compras</p>
+            <p onClick={()=>navigate('/purchase')}>Minhas compras</p>
             <img src={NextIcon} alt='Símbolo de próximo'/>
         </div>
         <div className="flex">
             <p onClick={()=>navigate('/favorites')}>Lista de desejos</p>
             <img src={NextIcon} alt='Símbolo de próximo'/>
         </div>
+        </AccountContainer>
   <ToastContainer
               position="top-center"
               autoClose={5000}
@@ -58,6 +63,8 @@ export default function UserProfile() {
               draggable
               pauseOnHover
             />
+            
+            <BottomBar></BottomBar>
     </Container>
   )
 }

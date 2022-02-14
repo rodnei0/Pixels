@@ -30,8 +30,8 @@ function MainPage() {
             </Container>
             <Bottom>
                 <ion-icon name="home-outline"></ion-icon>
-                <ion-icon name="heart-outline"></ion-icon>
-                <ion-icon name="person-outline"></ion-icon>
+                <ion-icon name="heart-outline" onCLick={()=>navigate("/favorites")}></ion-icon>
+                <ion-icon name="person-outline" onClick={()=>navigate('/profile')}></ion-icon>
                 <div onClick={() => navigate("/basket")}>
                     <ion-icon name="cart-outline"></ion-icon>
                     <div>{basket.length}</div>

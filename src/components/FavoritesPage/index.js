@@ -9,7 +9,7 @@ import { Container,
 }from '../styles/styles';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 
 export default function FavoritesPage() {
@@ -25,16 +25,33 @@ export default function FavoritesPage() {
   //     price:'$RS 12,500'
   //   },
   //   {
-  //     image:'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQw5MPbsM1qp3103W4O5YwuY1kOWCiplMAs3AvKqp_q4MCivcwY_ThIzlQKYV7u6VV3NvvMjyKDA_s&usqp=CAc',
-  //     description:'Iphone 13 PRO',
-  //     price:'$RS 12,500'
-  //   }
-  // ]
-   const BaseURL = 'http://localhost:5000';
-   const {info}=useContext(UserContext);
-   const [favoriteProducts,setFavoriteProducts]=useState();
+    //     image:'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQw5MPbsM1qp3103W4O5YwuY1kOWCiplMAs3AvKqp_q4MCivcwY_ThIzlQKYV7u6VV3NvvMjyKDA_s&usqp=CAc',
+    //     description:'Iphone 13 PRO',
+    //     price:'$RS 12,500'
+    //   }
+    // ]
+    const BaseURL = 'http://localhost:5000';
+    const {info}=useContext(UserContext);
+    const [favoriteProducts,setFavoriteProducts]=useState();
+    const navigate = useNavigate();
+    
+    const alert = (text) => toast.error(`${text}`, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
 
    useEffect(()=>{
+     if(!info){
+       alert("Você precisa estar logado");
+       navigate('/signin');
+       return;
+     }
       axios.get(`${BaseURL}/favorites`,{
        headers:{
          Authorization: `Bearer ${info.token}`
@@ -43,11 +60,11 @@ export default function FavoritesPage() {
        setFavoriteProducts(res.data);
     
      }).catch(alert("Falha ao carregar favoritos"));
-   },[info.token]);
+   },[info,navigate]);
 
-  const navigate = useNavigate();
 
   function FavoritesModel({product}){
+    console.log(product);
     return(
     <div className='block'>
         <img src={product.image} alt={product.description} />
@@ -55,21 +72,14 @@ export default function FavoritesPage() {
         <p  className="description">{product.description}</p>
         <p className="price">{product.value}</p>
         </div>
-        <Button onClick={()=>navigate('/')}>Adicionar</Button> 
+        <Link to={'/product'} state={product}>
+         <Button onClick={()=>navigate('/')}>Adicionar</Button> 
+        </Link>
     </div>
     )
     
   }
 
-   const alert = (text) => toast.error(`${text}`, {
-     position: "top-center",
-     autoClose: 5000,
-     hideProgressBar: false,
-     closeOnClick: true,
-     pauseOnHover: true,
-     draggable: true,
-     progress: undefined,
-   });
   return (
     <Container align={'flex-start'}>
       <Header>Favoritos</Header>
@@ -80,7 +90,7 @@ export default function FavoritesPage() {
           favoriteProducts.map(product=>{
             return(
               <FavoritesModel 
-              product={product}
+              product={product.product}
               />
             )
           })

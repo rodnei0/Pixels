@@ -3,12 +3,25 @@ import LocationIcon from '../../assets/location.png';
 import NextIcon from '../../assets/arrow-forward-outline.svg';
 import UserContext from '../../contexts/UserContext'
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {Container,Title} from '../styles/profile';
 
 export default function UserProfile() {
     const {info}=useContext(UserContext);
     const navigate = useNavigate();
+
+    const alert = (text) => toast.error(`${text}`, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
     if(!info){
       alert("Faça o login no seu perfil");
       return navigate('/signin')
@@ -34,7 +47,17 @@ export default function UserProfile() {
             <p onClick={()=>navigate('/favorites')}>Lista de desejos</p>
             <img src={NextIcon} alt='Símbolo de próximo'/>
         </div>
-
+  <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+            />
     </Container>
   )
 }

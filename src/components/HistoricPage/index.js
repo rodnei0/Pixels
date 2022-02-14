@@ -44,7 +44,7 @@ export default function HistoricPage() {
   }, [info.token]);
 
   useEffect(()=>{
-    axios.post(`${BaseURL}/purchase`, {items: purchase.items},config).then(res=>setItems(res.data).catch(err=>alert("Falha em trazer compras")))
+    axios.post(`${BaseURL}/purchase`, {items: purchase.items},config).then(res=>setItems(res.data))
    },[config, purchase.items])
 
     function HistoricModel(){

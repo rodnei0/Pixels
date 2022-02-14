@@ -42,7 +42,7 @@ export default function Purchases() {
     }, [info.token]);
 
    useEffect(()=>{
-    axios.get(`${BaseURL}/purchase`,config).then(res=>setPurchases(res.data).catch(err=>alert("Falha em trazer compras")))
+    axios.get(`${BaseURL}/purchase`,config).then(res=>setPurchases(res.data))
    },[config])
 
     function HistoricModel(){

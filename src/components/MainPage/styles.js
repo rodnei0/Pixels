@@ -13,12 +13,10 @@ const MainContainer = styled.div`
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
 
     padding-left: 39px;
 
     width: 375px;
-    /* min-height: 100vh; */
 `;
 
 const Top = styled.div`
@@ -69,16 +67,6 @@ const Categories = styled.div`
     height: 50px;
     margin-top: 25px;
     overflow: auto;
-
-    /* ::-webkit-scrollbar {
-        width: 0;
-        height: 6px;
-        background: #E5E5E5;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: #424242;
-    } */
 
     button {
         margin-right: 10px;
@@ -147,6 +135,8 @@ const ProductDescription = styled.span`
     font-size: 22px;
     line-height: 22px;
     color: #000000;
+
+    overflow: auto;
 
     margin-top: 135px;
 

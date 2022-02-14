@@ -33,8 +33,6 @@ align-items:center;
 flex-direction: column;
 height:100vh;
 
-
-
 padding:20px;
 
 .empty{
@@ -59,12 +57,12 @@ padding:20px;
 }
 `
 const Favorites = styled.div` 
-width:100%;
 
+width:100%;
+padding-top:80px;
+padding-bottom:80px;
 
 font-weight: bold;
-
-padding-top:80px;
 
 z-index: -1;
 
@@ -149,10 +147,40 @@ align-items:center;
 }
 
 `
+
+const Purchase = styled.div`
+    display: flex;
+    align-items: center;
+
+    width: 297px;
+    margin-top: 10px;
+    padding: 10px;
+    gap: 5px;
+    
+    background: #FFFFFF;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.06);
+    border-radius: 20px;
+`;
+
+const PurchaseContainer = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    width:100%;
+
+    img {
+        height: 100px;
+        width: 100px;  
+    }
+`;
+
 export {
     Container,
     Favorites,
     Button,
     Header,
-    Details
+    Details,
+    Purchase,
+    PurchaseContainer
 }

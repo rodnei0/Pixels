@@ -3,6 +3,7 @@ import Products from "./Products";
 import { useContext } from "react";
 import BasketContext from "../../contexts/BasketContext";
 import { useNavigate } from "react-router-dom";
+import BottomBar from "../BottomBar";
 
 function MainPage() {
     const { basket, category, setCategory } = useContext(BasketContext);
@@ -28,15 +29,7 @@ function MainPage() {
                     <Products category={category}></Products>
                 </ProductsContainer>
             </Container>
-            <Bottom>
-                <ion-icon name="home-outline"></ion-icon>
-                <ion-icon name="heart-outline" onCLick={()=>navigate("/favorites")}></ion-icon>
-                <ion-icon name="person-outline" onClick={()=>navigate('/profile')}></ion-icon>
-                <div onClick={() => navigate("/basket")}>
-                    <ion-icon name="cart-outline"></ion-icon>
-                    <div>{basket.length}</div>
-                </div>
-            </Bottom>
+            <BottomBar></BottomBar>
         </MainContainer>
     );
 }

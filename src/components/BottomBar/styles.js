@@ -14,8 +14,6 @@ const BottomContainer = styled.div`
 const Bottom = styled.div`
     display: flex;
     justify-content: space-between;
-    /* position: fixed; */
-    /* bottom: 15px; */
 
     width: 297px;
     margin-top: 15px;

@@ -5,7 +5,6 @@ import BasketContext from "../../contexts/BasketContext.js";
 import BasketProducts from "./BasketProducts.js";
 import UserContext from "../../contexts/UserContext.js";
 import axios from "axios";
-// import styled from "styled-components";
 
 function BasketPage() {
     const { basket, setBasket }  = useContext(BasketContext);
@@ -21,18 +20,6 @@ function BasketPage() {
         }
         return data;
     }, [info.token]);
-
-    // const data = useMemo(() => {
-    //     const productsIds = basket.map(product => {
-    //         return product._id
-    //     })
-    //     console.log(productsIds)
-    //     const dta = {
-    //             items : productsIds
-    //         }
-    //     return dta;
-    // }, [basket]);
-
     function CalculateTotal() {
         useEffect(() => {
             let sum = 0;

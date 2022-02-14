@@ -61,7 +61,6 @@ function CheckoutPage() {
                 <div>
                     <ion-icon name="arrow-back-outline" onClick={() => navigate(-1)}></ion-icon>
                     <span>Checkout</span>
-                    {/* <ion-icon name="trash-outline" onClick={cleanBasket}></ion-icon> */}
                     <p></p>
                 </div>
             </Top>

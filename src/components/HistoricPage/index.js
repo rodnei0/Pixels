@@ -3,7 +3,6 @@ import UserContext from '../../contexts/UserContext';
 import axios from 'axios';
 import CartIcon from '../../assets/add-to-cart.png'
 import { Container,
-  Favorites,
   Button,
   Header,
   Details,
@@ -44,16 +43,8 @@ export default function HistoricPage() {
     return data;
   }, [info.token]);
 
-  // useEffect(() => {
-  //   const promisse = axios.get(`${BaseURL}/purchase`)
-  // })
-   
-  //  useEffect(()=>{
-  //   axios.get(`${BaseURL}/purchase`,config).then(res=>setItems(res.data).catch(err=>alert("Falha em trazer compras")))
-  //  },[config])
-
   useEffect(()=>{
-    axios.post(`${BaseURL}/purchase`, {items: purchase.items},config).then(res=>setItems(res.data))
+    axios.post(`${BaseURL}/purchase`, {items: purchase.items},config).then(res=>setItems(res.data).catch(err=>alert("Falha em trazer compras")))
    },[config, purchase.items])
 
     function HistoricModel(){

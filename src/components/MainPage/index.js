@@ -1,13 +1,11 @@
-import { Bottom, ProductsContainer, Categories, Title, SearchBox, Top, Container, MainContainer } from "./styles"
+import { ProductsContainer, Categories, Title, SearchBox, Top, Container, MainContainer } from "./styles"
 import Products from "./Products";
 import { useContext } from "react";
 import BasketContext from "../../contexts/BasketContext";
-import { useNavigate } from "react-router-dom";
 import BottomBar from "../BottomBar";
 
 function MainPage() {
-    const { basket, category, setCategory } = useContext(BasketContext);
-    const navigate = useNavigate();
+    const { category, setCategory } = useContext(BasketContext);
 
     return (
         <MainContainer>
@@ -23,7 +21,7 @@ function MainPage() {
                     <button onClick={() => {setCategory("smartphone")}}>Smartphones</button>
                     <button onClick={() => {setCategory("notebook")}}>Notebooks</button>
                     <button onClick={() => {setCategory("fone")}}>Fones</button>
-                    <button onClick={() => {setCategory("periferico")}}>Periféricos</button>
+                    <button onClick={() => {setCategory("outros")}}>Outros</button>
                 </Categories>
                 <ProductsContainer>
                     <Products category={category}></Products>

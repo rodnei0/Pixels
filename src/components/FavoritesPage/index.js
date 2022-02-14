@@ -14,23 +14,6 @@ import BottomBar from '../BottomBar';
 
 
 export default function FavoritesPage() {
-  // const teste = [
-  //   {
-  //     image:'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQw5MPbsM1qp3103W4O5YwuY1kOWCiplMAs3AvKqp_q4MCivcwY_ThIzlQKYV7u6VV3NvvMjyKDA_s&usqp=CAc',
-  //     description:'Iphone 13 PRO',
-  //     price:'$RS 12,500'
-  //   },
-  //   {
-  //     image:'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQw5MPbsM1qp3103W4O5YwuY1kOWCiplMAs3AvKqp_q4MCivcwY_ThIzlQKYV7u6VV3NvvMjyKDA_s&usqp=CAc',
-  //     description:'Iphone 13 PRO',
-  //     price:'$RS 12,500'
-  //   },
-  //   {
-    //     image:'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQw5MPbsM1qp3103W4O5YwuY1kOWCiplMAs3AvKqp_q4MCivcwY_ThIzlQKYV7u6VV3NvvMjyKDA_s&usqp=CAc',
-    //     description:'Iphone 13 PRO',
-    //     price:'$RS 12,500'
-    //   }
-    // ]
     const BaseURL = 'https://back-pixels.herokuapp.com';
     const {info}=useContext(UserContext);
     const [favoriteProducts,setFavoriteProducts]=useState();

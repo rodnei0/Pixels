@@ -2,7 +2,6 @@ import React, {useEffect,useState, useMemo,useContext} from 'react'
 import axios from 'axios';
 import UserContext from '../../contexts/UserContext';
 import { Container,
-    Favorites,
     Button,
     Header,
     Details,
@@ -14,7 +13,6 @@ import { Container,
   import CartIcon from '../../assets/add-to-cart.png';
   import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
-import styled from 'styled-components';
 import BottomBar from '../BottomBar';
   
 
@@ -44,7 +42,7 @@ export default function Purchases() {
     }, [info.token]);
 
    useEffect(()=>{
-    axios.get(`${BaseURL}/purchase`,config).then(res=>setPurchases(res.data))
+    axios.get(`${BaseURL}/purchase`,config).then(res=>setPurchases(res.data).catch(err=>alert("Falha em trazer compras")))
    },[config])
 
     function HistoricModel(){
@@ -82,17 +80,7 @@ export default function Purchases() {
       </Header>
          {
         purchases? 
-      //   <Favorites>
-      //          <Link to={"/historic"}>
-      //       <Teste >teste</Teste>
-      //     </Link>
-      //     {
-      //    purchases.map(purchase=>{
-      //     return <HistoricModel purchase={purchase} key={purchase._id}/>
-      //  })
-      //     }
 
-      //   </Favorites>
         <PurchaseContainer>
             <HistoricModel></HistoricModel>
         </PurchaseContainer>
@@ -118,10 +106,3 @@ export default function Purchases() {
     </Container>
   )
 }
-
-const Teste = styled.button`
-  width: 150px;
-  height: 150px;
-  margin-top: 100px;
-  background-color: red;
-`;

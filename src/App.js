@@ -12,16 +12,17 @@ import UserContext from './contexts/UserContext'
 import UserProfile from './components/UserProfile';
 import './style/reset.css'
 import './style/style.css'
+import CheckoutPage from './components/CheckoutPage';
 
 function App() {
     const [ basket, setBasket ] = useState([]);
     const [ products, setProducts ] = useState([]);
     const [ total, setTotal ] = useState(0);
     const [ category, setCategory ] = useState("smartphone");
-    const [info,setInfo] = useState();
+    const [ info, setInfo ] = useState("");
 
     return (
-        <BasketContext.Provider value={{basket, setBasket, products, setProducts, total, setTotal, category, setCategory}}>            
+        <BasketContext.Provider value={{basket, setBasket, products, setProducts, total, setTotal, category, setCategory, info, setInfo}}>            
             <UserContext.Provider value={{info,setInfo}}>
             <BrowserRouter>
                 <Routes>
@@ -33,6 +34,7 @@ function App() {
                     <Route path="/favorites" element={<FavoritesPage />} />
                     <Route path="/historic" element={<HistoricPage />} />
                     <Route path="/profile" element={<UserProfile />} />
+                    <Route path="/checkout" element={<CheckoutPage />} />
                 </Routes>
             </BrowserRouter>
         </UserContext.Provider>

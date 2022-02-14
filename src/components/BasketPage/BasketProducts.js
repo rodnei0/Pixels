@@ -4,6 +4,7 @@ import BasketContext from "../../contexts/BasketContext.js";
 
 function BasketProducts() {
     const { basket, setBasket }  = useContext(BasketContext);
+  
 
     function handleQuantity(id, type) {
         const newProducts = basket.map(product=> {

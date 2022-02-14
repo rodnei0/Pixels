@@ -32,7 +32,7 @@ function submitForm(event){
     email,
     password
   }
-console.log(user);
+// console.log(user);
 event.preventDefault();
 
 axios.post(`${BaseURL}/signin`,user).then(res=>{

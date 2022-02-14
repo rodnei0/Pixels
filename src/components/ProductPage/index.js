@@ -1,8 +1,10 @@
 import { Top, MainContainer, Container, Name, ProductInfo, FullDescription, Value, AddBasket } from "./styles.js"
 import SimpleImageSlider from "react-simple-image-slider";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useMemo, useState } from "react";
 import BasketContext from "../../contexts/BasketContext.js";
+import axios from "axios";
+import UserContext from "../../contexts/UserContext.js";
 
 // somente para testar o slider
 const images = [
@@ -14,10 +16,13 @@ const images = [
 //.............................
 
 function ProductPage() {
-    const { basket, setBasket}  = useContext(BasketContext);
+    const { basket, setBasket }  = useContext(BasketContext);
     const navigate = useNavigate();
     const location = useLocation();
     const product = location.state;
+    const [ added, setAdded]=useState(false);
+    const { info } = useContext(UserContext);
+
 
     function handleBasket() {
         if (basket.length === 0) {
@@ -33,11 +38,40 @@ function ProductPage() {
         }
     }
 
+    const config = useMemo(() => {
+        const data = {
+            headers: {
+                "Authorization": `Bearer ${info.token}`
+            }
+        }
+        return data;
+    }, [info.token]);
+
+    function addFavorites(){
+        if(added){
+            setAdded(false);
+            //fazer requisição de delete from favorites
+        }else{
+            if(!info){
+                alert("Você precisa estar logado para favoritar");
+                navigate('/signin');
+                return;
+            }
+            const promisse = axios.post("http://localhost:5000/favorites", product, config);
+            promisse.then(() => setAdded(true))
+        }
+     }
+
     return (
         <MainContainer>
             <Top>
                 <ion-icon name="arrow-back-outline" onClick={() => navigate(-1)}></ion-icon>
-                <ion-icon name="heart-outline"></ion-icon>
+                { 
+                added? 
+                 <ion-icon name="heart" onClick={() => addFavorites()}></ion-icon>
+                 :
+                <ion-icon name="heart-outline" onClick={() => addFavorites()}></ion-icon>
+                }
             </Top>
             <Container>
                 <SimpleImageSlider

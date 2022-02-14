@@ -1,36 +1,37 @@
 import { Top, MainContainer, Container, Checkout, Total, Bottom } from "./styles.js"
 import { useNavigate } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useMemo } from "react";
 import BasketContext from "../../contexts/BasketContext.js";
 import BasketProducts from "./BasketProducts.js";
+import UserContext from "../../contexts/UserContext.js";
+import axios from "axios";
 // import styled from "styled-components";
-// import axios from "axios";
 
 function BasketPage() {
     const { basket, setBasket }  = useContext(BasketContext);
     const { total, setTotal } = useContext(BasketContext);
+    const { info } = useContext(UserContext);
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     setProducts(basket);
-    // },[setProducts, basket])
+    const config = useMemo(() => {
+        const data = {
+            headers: {
+                "Authorization": `Bearer ${info.token}`
+            }
+        }
+        return data;
+    }, [info.token]);
 
-    // const config = useMemo(() => {
-    //     const data = {
-    //             basket : basket
+    // const data = useMemo(() => {
+    //     const productsIds = basket.map(product => {
+    //         return product._id
+    //     })
+    //     console.log(productsIds)
+    //     const dta = {
+    //             items : productsIds
     //         }
-    //     return data;
+    //     return dta;
     // }, [basket]);
-
-    // useEffect(() => {
-    //     const promisse = axios.post("http://localhost:5000/basket", config);
-    //     promisse.then(response => {
-    //         setProducts(response.data);
-    //     });
-    //     promisse.catch(response => {
-    //         console.log(response);
-    //     });
-    // }, [config, setProducts]);
 
     function CalculateTotal() {
         useEffect(() => {
@@ -41,12 +42,24 @@ function BasketPage() {
             setTotal(sum)
         })
     }
-
     CalculateTotal();
         
     function cleanBasket() {
         alert("Tem certeza que deseja remover todos os itens do carrinho?");
         setBasket([])
+    }
+
+    function handleCheckout() {
+            const promisse = axios.get("http://localhost:5000/checkout", config);
+            promisse.then(response => {
+                navigate("/checkout")
+            });
+            promisse.catch(response => {
+                if (response.response.status === 401) {
+                    const test = window.confirm("Você precisa estar logado para finalizar sua compra, estamos redirecionando você para a página de login...");
+                    if (test) navigate("/signin")
+                }
+            });
     }
 
     return (
@@ -66,7 +79,7 @@ function BasketPage() {
                     <span>Total</span>
                     <div>R$ {total.toFixed(2)}</div>
                 </Total>
-                <Checkout>Checkout</Checkout>
+                <Checkout onClick={handleCheckout}>Checkout</Checkout>
             </Bottom>
         </MainContainer>
     );

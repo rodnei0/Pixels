@@ -22,6 +22,7 @@ function ProductPage() {
     const product = location.state;
     const [ added, setAdded]=useState(false);
     const { info } = useContext(UserContext);
+    const BaseURL = 'http://localhost:5000';
 
 
     function handleBasket() {
@@ -37,6 +38,13 @@ function ProductPage() {
             })
         }
     }
+   
+        useMemo(()=>{
+            if(product.favorite===true){
+                setAdded(true); 
+            }
+        },[product.favorite]);
+    
 
     const config = useMemo(() => {
         const data = {
@@ -48,18 +56,18 @@ function ProductPage() {
     }, [info.token]);
 
     function addFavorites(){
-        if(added){
-            setAdded(false);
-            //fazer requisição de delete from favorites
-        }else{
-            if(!info){
-                alert("Você precisa estar logado para favoritar");
-                navigate('/signin');
-                return;
-            }
-            const promisse = axios.post("http://localhost:5000/favorites", product, config);
-            promisse.then(() => setAdded(true))
-        }
+        added ? setAdded(false) : setAdded(true);
+         if(product.favorites===true){
+             axios.delete(`${BaseURL}/favorites`,product,config);
+         }else{
+             if(!info){
+                 alert("Você precisa estar logado para favoritar");
+                 navigate('/signin');
+                 return;
+             }
+             axios.post(`${BaseURL}/favorites`, product, config).then(res=>console.log(res)).catch(res=>console.log(res));
+    
+         }
      }
 
     return (

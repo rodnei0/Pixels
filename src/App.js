@@ -13,6 +13,7 @@ import UserProfile from './components/UserProfile';
 import './style/reset.css'
 import './style/style.css'
 import CheckoutPage from './components/CheckoutPage';
+import Purchases from './components/PurchasePage';
 
 function App() {
     const [ basket, setBasket ] = useState([]);
@@ -33,6 +34,7 @@ function App() {
                     <Route path="/signup" element={<SignUp />}/>
                     <Route path="/favorites" element={<FavoritesPage />} />
                     <Route path="/historic" element={<HistoricPage />} />
+                    <Route path="/purchase" element={<Purchases />} />
                     <Route path="/profile" element={<UserProfile />} />
                     <Route path="/checkout" element={<CheckoutPage />} />
                 </Routes>
